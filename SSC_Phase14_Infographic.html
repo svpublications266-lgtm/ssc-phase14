@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC Phase XIV 2026 Infographic | svpublications</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  
+  body {
+    background: #111;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 40px;
+    gap: 20px;
+  }
+
+  .card {
+    width: 420px;
+    max-width: 100vw;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  /* ===== CARD 1: MAIN ANNOUNCEMENT ===== */
+  .card-1 {
+    background: #0A0A0A;
+    border: 1px solid #222;
+  }
+
+  .c1-top {
+    background: linear-gradient(135deg, #FF6B00 0%, #FF9500 100%);
+    padding: 20px 22px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .c1-top::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .c1-top::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.1);
+  }
+
+  .brand-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .brand-tag::before { content: '📢'; font-size: 10px; }
+
+  .c1-headline {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 48px;
+    line-height: 0.9;
+    color: #fff;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .c1-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 6px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  .c1-body { padding: 20px 22px; }
+
+  .big-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .big-stat {
+    background: #181818;
+    border-radius: 12px;
+    padding: 14px 8px;
+    text-align: center;
+    border: 1px solid #2A2A2A;
+  }
+  .big-stat-num {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: #FF6B00;
+    line-height: 1;
+  }
+  .big-stat-label {
+    font-size: 10px;
+    color: #666;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  .deadline-box {
+    background: linear-gradient(135deg, #1A0A00, #0A0A0A);
+    border: 1px solid rgba(255,107,0,0.3);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+  .deadline-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #FF6B00;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .deadline-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .dd-item { }
+  .dd-date { font-size: 13px; font-weight: 700; color: #fff; }
+  .dd-desc { font-size: 10px; color: #666; margin-top: 1px; }
+
+  .qual-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .qual-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .qual-icon { font-size: 18px; width: 28px; flex-shrink: 0; }
+  .qual-info { flex: 1; }
+  .qual-name { font-size: 12px; font-weight: 600; color: #e0e0e0; }
+  .qual-bar-wrap { height: 6px; background: #222; border-radius: 4px; margin-top: 3px; overflow: hidden; }
+  .qual-bar { height: 100%; border-radius: 4px; }
+  .qual-nums { text-align: right; font-family: 'Barlow Condensed', sans-serif; }
+  .qual-posts { font-size: 13px; font-weight: 700; color: #FF6B00; }
+  .qual-vac { font-size: 10px; color: #555; }
+
+  .c1-footer {
+    background: #0D0D0D;
+    border-top: 1px solid #1E1E1E;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .svp-brand { font-family: 'Bebas Neue', cursive; font-size: 16px; letter-spacing: 2px; color: #FF6B00; }
+  .svp-brand span { color: #555; }
+  .share-note { font-size: 10px; color: #444; }
+
+  /* ===== CARD 2: REGION MAP ===== */
+  .card-2 { background: #0A0A0A; border: 1px solid #222; }
+
+  .c2-header {
+    background: #111;
+    border-bottom: 1px solid #1E1E1E;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .c2-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+  .c2-title span { color: #FF6B00; }
+
+  .region-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #1A1A1A;
+  }
+  .region-cell {
+    background: #0D0D0D;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s;
+  }
+  .region-cell:hover { background: #141414; }
+  .region-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    color: #000;
+    font-weight: 700;
+  }
+  .region-info { flex: 1; min-width: 0; }
+  .region-name { font-size: 11px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .region-vac { font-family: 'Bebas Neue', cursive; font-size: 22px; color: #fff; line-height: 1; }
+  .region-posts { font-size: 10px; color: #555; }
+  .region-bar { width: 4px; height: 40px; border-radius: 2px; flex-shrink: 0; }
+
+  /* ===== CARD 3: TOP POSTS ===== */
+  .card-3 { background: #0A0A0A; border: 1px solid #222; }
+
+  .c3-header {
+    padding: 18px 22px 14px;
+    background: linear-gradient(135deg, #0D1A0D, #0A0A0A);
+    border-bottom: 1px solid #1E1E1E;
+  }
+  .c3-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .c3-title span { color: #4CAF50; }
+
+  .top-post-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 22px;
+    border-bottom: 1px solid #141414;
+  }
+  .top-rank {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px;
+    color: #2A2A2A;
+    width: 28px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .top-rank.gold { color: #FFD700; }
+  .top-rank.silver { color: #C0C0C0; }
+  .top-rank.bronze { color: #CD7F32; }
+  .top-info { flex: 1; min-width: 0; }
+  .top-name { font-size: 12px; font-weight: 600; color: #e0e0e0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .top-meta { font-size: 10px; color: #555; margin-top: 2px; }
+  .top-vac {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 26px;
+    color: #4CAF50;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .top-bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0; opacity: 0.04; }
+
+  /* DOWNLOAD NOTE */
+  .dl-note {
+    width: 420px;
+    max-width: 100vw;
+    text-align: center;
+    padding: 16px;
+    background: rgba(255,107,0,0.05);
+    border: 1px solid rgba(255,107,0,0.15);
+    border-radius: 14px;
+    font-size: 12px;
+    color: #666;
+  }
+  .dl-note strong { color: #FF6B00; display: block; margin-bottom: 4px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<!-- CARD 1: MAIN ANNOUNCEMENT -->
+<div class="card card-1">
+  <div class="c1-top">
+    <div class="brand-tag">svpublications</div>
+    <div class="c1-headline">SSC PHASE XIV<br>2026</div>
+    <div class="c1-sub">Selection Posts Recruitment · Official Announcement</div>
+  </div>
+
+  <div class="c1-body">
+    <div class="big-stat-row">
+      <div class="big-stat">
+        <div class="big-stat-num">382</div>
+        <div class="big-stat-label">Post Categories</div>
+      </div>
+      <div class="big-stat">
+        <div class="big-stat-num">3,003</div>
+        <div class="big-stat-label">Total Vacancies</div>
+      </div>
+      <div class="big-stat">
+        <div class="big-stat-num">9</div>
+        <div class="big-stat-label">Regions</div>
+      </div>
+    </div>
+
+    <div class="deadline-box">
+      <div class="deadline-label">⏰ Important Dates</div>
+      <div class="deadline-dates">
+        <div class="dd-item">
+          <div class="dd-date">13 Apr – 04 May</div>
+          <div class="dd-desc">Apply Online</div>
+        </div>
+        <div class="dd-item">
+          <div class="dd-date">05 May 2026</div>
+          <div class="dd-desc">Fee Payment Deadline</div>
+        </div>
+        <div class="dd-item">
+          <div class="dd-date">11–13 May 2026</div>
+          <div class="dd-desc">Form Correction</div>
+        </div>
+        <div class="dd-item">
+          <div class="dd-date">June 2026</div>
+          <div class="dd-desc">CBE Exam (Tentative)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BY QUALIFICATION -->
+    <div style="margin-bottom:6px;font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px">By Qualification</div>
+    <div class="qual-breakdown">
+      <div class="qual-row">
+        <div class="qual-icon">🏫</div>
+        <div class="qual-info">
+          <div class="qual-name">Matriculation (10th)</div>
+          <div class="qual-bar-wrap"><div class="qual-bar" style="width:100%;background:#FF6B00"></div></div>
+        </div>
+        <div class="qual-nums">
+          <div class="qual-posts">166 Posts</div>
+          <div class="qual-vac">1,675 Vacancies</div>
+        </div>
+      </div>
+      <div class="qual-row">
+        <div class="qual-icon">🎓</div>
+        <div class="qual-info">
+          <div class="qual-name">Graduation & Above</div>
+          <div class="qual-bar-wrap"><div class="qual-bar" style="width:60%;background:#4CAF50"></div></div>
+        </div>
+        <div class="qual-nums">
+          <div class="qual-posts">151 Posts</div>
+          <div class="qual-vac">1,011 Vacancies</div>
+        </div>
+      </div>
+      <div class="qual-row">
+        <div class="qual-icon">📚</div>
+        <div class="qual-info">
+          <div class="qual-name">Higher Secondary (10+2)</div>
+          <div class="qual-bar-wrap"><div class="qual-bar" style="width:19%;background:#2196F3"></div></div>
+        </div>
+        <div class="qual-nums">
+          <div class="qual-posts">65 Posts</div>
+          <div class="qual-vac">317 Vacancies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c1-footer">
+    <div class="svp-brand">sv<span>publications</span></div>
+    <div class="share-note">Age as on 01.01.2026 · Vacancies tentative</div>
+  </div>
+</div>
+
+<!-- CARD 2: REGION BREAKDOWN -->
+<div class="card card-2">
+  <div class="c2-header">
+    <div>
+      <div class="c2-title">Vacancies <span>by Region</span></div>
+      <div style="font-size:11px;color:#555;margin-top:2px">All 9 SSC Regional Offices</div>
+    </div>
+    <div style="margin-left:auto;font-family:'Bebas Neue',cursive;font-size:13px;color:#FF6B00;letter-spacing:1px">svpublications</div>
+  </div>
+
+  <div class="region-grid">
+    <!-- MPR -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#FF6B00">MPR</div>
+      <div class="region-info">
+        <div class="region-name">Madhya Pradesh Region</div>
+        <div class="region-vac">752</div>
+        <div class="region-posts">40 posts</div>
+      </div>
+      <div class="region-bar" style="background:#FF6B00"></div>
+    </div>
+    <!-- NR -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#DDA0DD">NR</div>
+      <div class="region-info">
+        <div class="region-name">Northern Region</div>
+        <div class="region-vac">531</div>
+        <div class="region-posts">49 posts</div>
+      </div>
+      <div class="region-bar" style="background:#DDA0DD"></div>
+    </div>
+    <!-- CR -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#FF6B6B">CR</div>
+      <div class="region-info">
+        <div class="region-name">Central Region</div>
+        <div class="region-vac">334</div>
+        <div class="region-posts">38 posts</div>
+      </div>
+      <div class="region-bar" style="background:#FF6B6B"></div>
+    </div>
+    <!-- KKR -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#45B7D1">KKR</div>
+      <div class="region-info">
+        <div class="region-name">Karnataka Kerala</div>
+        <div class="region-vac">324</div>
+        <div class="region-posts">42 posts</div>
+      </div>
+      <div class="region-bar" style="background:#45B7D1"></div>
+    </div>
+    <!-- WR -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#FF9A9E">WR</div>
+      <div class="region-info">
+        <div class="region-name">Western Region</div>
+        <div class="region-vac">258</div>
+        <div class="region-posts">45 posts</div>
+      </div>
+      <div class="region-bar" style="background:#FF9A9E"></div>
+    </div>
+    <!-- ER -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#4ECDC4">ER</div>
+      <div class="region-info">
+        <div class="region-name">Eastern Region</div>
+        <div class="region-vac">257</div>
+        <div class="region-posts">43 posts</div>
+      </div>
+      <div class="region-bar" style="background:#4ECDC4"></div>
+    </div>
+    <!-- NER -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#FFEAA7;color:#333">NER</div>
+      <div class="region-info">
+        <div class="region-name">North Eastern Region</div>
+        <div class="region-vac">251</div>
+        <div class="region-posts">45 posts</div>
+      </div>
+      <div class="region-bar" style="background:#FFEAA7"></div>
+    </div>
+    <!-- NWR -->
+    <div class="region-cell">
+      <div class="region-dot" style="background:#98FB98;color:#333">NWR</div>
+      <div class="region-info">
+        <div class="region-name">North Western Region</div>
+        <div class="region-vac">152</div>
+        <div class="region-posts">33 posts</div>
+      </div>
+      <div class="region-bar" style="background:#98FB98"></div>
+    </div>
+    <!-- SR -->
+    <div class="region-cell" style="grid-column:1/-1">
+      <div class="region-dot" style="background:#F0A500">SR</div>
+      <div class="region-info">
+        <div class="region-name">Southern Region</div>
+        <div class="region-vac">144</div>
+        <div class="region-posts">47 posts</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="font-size:10px;color:#444;text-align:right">
+        <div>Total</div>
+        <div style="font-family:'Bebas Neue',cursive;font-size:22px;color:#FF6B00">3,003</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0D0D0D;border-top:1px solid #1A1A1A;padding:12px 22px;display:flex;justify-content:space-between;align-items:center">
+    <div style="font-family:'Bebas Neue',cursive;font-size:15px;letter-spacing:2px;color:#FF6B00">sv<span style="color:#444">publications</span></div>
+    <div style="font-size:10px;color:#444">SSC Phase-XIV/2026</div>
+  </div>
+</div>
+
+<!-- CARD 3: TOP 8 POSTS -->
+<div class="card card-3">
+  <div class="c3-header">
+    <div class="c3-title">Top Posts <span>by Vacancies</span></div>
+    <div style="font-size:11px;color:#555;margin-top:2px">Highest opportunity posts across all regions</div>
+  </div>
+
+  <div style="position:relative">
+    <div class="top-post-item">
+      <div class="top-rank gold">#1</div>
+      <div class="top-info">
+        <div class="top-name">Medical Attendant</div>
+        <div class="top-meta">MPR · Level 2 · Matriculation</div>
+      </div>
+      <div class="top-vac">235</div>
+    </div>
+    <div class="top-post-item">
+      <div class="top-rank silver">#2</div>
+      <div class="top-info">
+        <div class="top-name">Surveyor</div>
+        <div class="top-meta">KKR · Level 6 · Graduation</div>
+      </div>
+      <div class="top-vac">197</div>
+    </div>
+    <div class="top-post-item">
+      <div class="top-rank bronze">#3</div>
+      <div class="top-info">
+        <div class="top-name">Nursing Officer</div>
+        <div class="top-meta">MPR · Level 7 · Graduation</div>
+      </div>
+      <div class="top-vac">107</div>
+    </div>
+    <div class="top-post-item">
+      <div class="top-rank">#4</div>
+      <div class="top-info">
+        <div class="top-name">Pharmacist (Allopathic)</div>
+        <div class="top-meta">MPR · Level 5 · Graduation</div>
+      </div>
+      <div class="top-vac">105</div>
+    </div>
+    <div class="top-post-item">
+      <div class="top-rank">#5</div>
+      <div class="top-info">
+        <div class="top-name">Lady Medical Attendant</div>
+        <div class="top-meta">MPR · Level 2 · Matriculation</div>
+      </div>
+      <div class="top-vac">86</div>
+    </div>
+    <div class="top-post-item">
+      <div class="top-rank">#6</div>
+      <div class="top-info">
+        <div class="top-name">JE (QA), Discipline-Electronics</div>
+        <div class="top-meta">CR · Level 6 · Higher Secondary</div>
+      </div>
+      <div class="top-vac">75</div>
+    </div>
+    <div class="top-post-item">
+      <div class="top-rank">#7</div>
+      <div class="top-info">
+        <div class="top-name">JE (QA), Discipline-Vehicle</div>
+        <div class="top-meta">CR · Level 6 · Higher Secondary</div>
+      </div>
+      <div class="top-vac">70</div>
+    </div>
+    <div class="top-post-item" style="border-bottom:none">
+      <div class="top-rank">#8</div>
+      <div class="top-info">
+        <div class="top-name">Junior Wireless Officers</div>
+        <div class="top-meta">NR · Level 6 · Higher Secondary</div>
+      </div>
+      <div class="top-vac">60</div>
+    </div>
+  </div>
+
+  <div style="background:#0D0D0D;border-top:1px solid #1A1A1A;padding:12px 22px;display:flex;justify-content:space-between;align-items:center">
+    <div style="font-family:'Bebas Neue',cursive;font-size:15px;letter-spacing:2px;color:#FF6B00">sv<span style="color:#444">publications</span></div>
+    <div style="font-size:10px;color:#444">ssc.gov.in · Phase-XIV/2026</div>
+  </div>
+</div>
+
+<div class="dl-note">
+  <strong>🔍 Search All 382 Posts — Interactive Tool</strong>
+  Open the interactive tool to filter by your qualification, region & age.<br>
+  Shared by svpublications · Data from official SSC notice dated 13.04.2026
+</div>
+
+</body>
+</html>

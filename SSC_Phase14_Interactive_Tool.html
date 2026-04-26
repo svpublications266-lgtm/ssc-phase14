@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC Phase XIV 2026 | svpublications</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #FF6B00;
+    --brand2: #FF9A3C;
+    --dark: #0D0D0D;
+    --surface: #161616;
+    --card: #1E1E1E;
+    --border: #2A2A2A;
+    --text: #F0F0F0;
+    --muted: #888;
+    --green: #4CAF50;
+    --blue: #2196F3;
+    --purple: #9C27B0;
+    --teal: #00BCD4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .brand {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--brand);
+  }
+  .brand span { color: var(--text); }
+
+  .header-badge {
+    background: var(--brand);
+    color: #000;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1a0a00 0%, #0D0D0D 50%, #001a10 100%);
+    padding: 32px 20px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,107,0,0.15) 0%, transparent 70%);
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,107,0,0.12);
+    border: 1px solid rgba(255,107,0,0.3);
+    color: var(--brand2);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .hero-tag::before { content: '●'; font-size: 8px; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(32px, 8vw, 52px);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .hero h1 .accent { color: var(--brand); }
+
+  .hero-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent-color, var(--brand));
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    color: var(--accent-color, var(--brand));
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  /* FILTER SECTION */
+  .section {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--brand);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* QUAL PILLS */
+  .qual-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .qual-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 90px;
+  }
+  .qual-tab:hover { border-color: var(--brand); }
+  .qual-tab.active {
+    border-color: var(--brand);
+    background: rgba(255,107,0,0.1);
+  }
+  .qual-tab-icon { font-size: 20px; }
+  .qual-tab-name {
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text);
+  }
+  .qual-tab-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--brand);
+    background: rgba(255,107,0,0.1);
+    padding: 1px 6px;
+    border-radius: 6px;
+  }
+
+  /* FILTERS */
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .filter-group label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  select, input[type="text"] {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  select:focus, input:focus { border-color: var(--brand); }
+
+  .search-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .search-wrap input {
+    padding-left: 36px;
+  }
+  .search-wrap::before {
+    content: '🔍';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    z-index: 1;
+  }
+
+  /* RESULTS COUNT */
+  .results-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    background: var(--card);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .results-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--brand);
+  }
+  .results-vac {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .vac-num {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* POST CARDS */
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .post-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .post-card:hover {
+    border-color: rgba(255,107,0,0.4);
+    transform: translateY(-1px);
+  }
+  .post-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--card-accent, var(--brand));
+    border-radius: 3px 0 0 3px;
+  }
+
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+
+  .post-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .post-total {
+    background: var(--brand);
+    color: #000;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    padding: 2px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .meta-pill .icon { font-size: 12px; }
+
+  .cat-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+
+  .cat-cell {
+    text-align: center;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 5px 4px;
+  }
+  .cat-cell .cat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .cat-cell .cat-lbl {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .cat-cell.has-vac .cat-num { color: var(--green); }
+  .cat-cell.no-vac .cat-num { color: var(--border); }
+
+  /* REGION COLORS */
+  .region-CR { --card-accent: #FF6B6B; }
+  .region-ER { --card-accent: #4ECDC4; }
+  .region-KKR { --card-accent: #45B7D1; }
+  .region-MPR { --card-accent: #96CEB4; }
+  .region-NER { --card-accent: #FFEAA7; }
+  .region-NR { --card-accent: #DDA0DD; }
+  .region-NWR { --card-accent: #98FB98; }
+  .region-SR { --card-accent: #F0A500; }
+  .region-WR { --card-accent: #FF9A9E; }
+
+  .region-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 5px;
+    letter-spacing: 0.5px;
+    color: #000;
+    background: var(--card-accent, var(--brand));
+  }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+  }
+  .empty-state .emoji { font-size: 40px; margin-bottom: 10px; display: block; }
+  .empty-state p { font-size: 14px; }
+
+  /* LOAD MORE */
+  .load-more-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--card);
+    border: 1px solid var(--brand);
+    color: var(--brand);
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 14px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .load-more-btn:hover { background: rgba(255,107,0,0.1); }
+
+  /* DATES BAR */
+  .dates-bar {
+    margin: 0 20px 16px;
+    background: rgba(255,107,0,0.08);
+    border: 1px solid rgba(255,107,0,0.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .dates-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .dates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .date-item { font-size: 11px; color: var(--muted); }
+  .date-item strong { color: var(--text); display: block; font-size: 12px; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 16px 20px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 20px;
+  }
+  .footer a { color: var(--brand); text-decoration: none; }
+
+  /* CHART SECTION */
+  .chart-section {
+    padding: 0 20px 20px;
+  }
+
+  .mini-bar-chart { display: flex; flex-direction: column; gap: 8px; }
+  .bar-item { display: flex; align-items: center; gap: 8px; }
+  .bar-label { font-size: 11px; color: var(--muted); width: 36px; text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 20px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 4px; background: var(--brand); transition: width 1s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; min-width: 30px; }
+  .bar-val { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #000; font-weight: 700; }
+
+  .tab-bar {
+    display: flex;
+    padding: 0 20px;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+    overflow-x: auto;
+  }
+  .tab-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .tab-btn.active { color: var(--brand); border-bottom-color: var(--brand); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--brand);
+    color: #000;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 50;
+  }
+  .scroll-top.visible { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="brand">sv<span>publications</span></div>
+  <div class="header-badge">PHASE XIV · 2026</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">SSC Selection Posts</div>
+  <h1>PHASE XIV<br><span class="accent">2026</span></h1>
+  <div class="hero-sub">Official Notice · 382 Post Categories · 3,003 Total Vacancies<br>Apply: 13 April – 04 May 2026</div>
+  <div class="stats-row">
+    <div class="stat-card" style="--accent-color:#FF6B00">
+      <div class="stat-num">382</div>
+      <div class="stat-label">Post Categories</div>
+    </div>
+    <div class="stat-card" style="--accent-color:#4CAF50">
+      <div class="stat-num">3,003</div>
+      <div class="stat-label">Total Vacancies</div>
+    </div>
+    <div class="stat-card" style="--accent-color:#2196F3">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Regions</div>
+    </div>
+  </div>
+</div>
+
+<!-- DATES -->
+<div class="dates-bar">
+  <div class="dates-title">📅 Important Dates</div>
+  <div class="dates-grid">
+    <div class="date-item"><strong>13 Apr – 04 May 2026</strong>Apply Online</div>
+    <div class="date-item"><strong>05 May 2026</strong>Fee Payment Last Date</div>
+    <div class="date-item"><strong>11–13 May 2026</strong>Form Correction Window</div>
+    <div class="date-item"><strong>June 2026</strong>CBE Exam (Tentative)</div>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('find')">🔍 Find Posts</button>
+  <button class="tab-btn" onclick="switchTab('charts')">📊 Analytics</button>
+  <button class="tab-btn" onclick="switchTab('top')">🏆 Top Posts</button>
+</div>
+
+<!-- TAB: FIND POSTS -->
+<div id="tab-find" class="tab-content active">
+  <div class="section">
+    <!-- QUAL TABS -->
+    <div class="section-title">By Qualification</div>
+    <div class="qual-tabs" id="qualTabs">
+      <div class="qual-tab active" data-qual="all" onclick="setQual(this, 'all')">
+        <span class="qual-tab-icon">📋</span>
+        <span class="qual-tab-name">All Posts</span>
+        <span class="qual-tab-count" id="count-all">382</span>
+      </div>
+      <div class="qual-tab" data-qual="Matriculation (10th)" onclick="setQual(this, 'Matriculation (10th)')">
+        <span class="qual-tab-icon">🏫</span>
+        <span class="qual-tab-name">Matric 10th</span>
+        <span class="qual-tab-count" id="count-mat">166</span>
+      </div>
+      <div class="qual-tab" data-qual="Higher Secondary (10+2)" onclick="setQual(this, 'Higher Secondary (10+2)')">
+        <span class="qual-tab-icon">📚</span>
+        <span class="qual-tab-name">10+2</span>
+        <span class="qual-tab-count" id="count-hs">65</span>
+      </div>
+      <div class="qual-tab" data-qual="Graduation & Above" onclick="setQual(this, 'Graduation & Above')">
+        <span class="qual-tab-icon">🎓</span>
+        <span class="qual-tab-name">Graduation+</span>
+        <span class="qual-tab-count" id="count-grad">151</span>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <div class="filter-group">
+        <label>Region</label>
+        <select id="regionFilter" onchange="applyFilters()">
+          <option value="all">All Regions</option>
+          <option value="CR">CR — Central</option>
+          <option value="ER">ER — Eastern</option>
+          <option value="KKR">KKR — Karnataka Kerala</option>
+          <option value="MPR">MPR — MP Region</option>
+          <option value="NER">NER — North Eastern</option>
+          <option value="NR">NR — Northern</option>
+          <option value="NWR">NWR — North Western</option>
+          <option value="SR">SR — Southern</option>
+          <option value="WR">WR — Western</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Max Age</label>
+        <select id="ageFilter" onchange="applyFilters()">
+          <option value="all">Any Age</option>
+          <option value="25">Up to 25</option>
+          <option value="27">Up to 27</option>
+          <option value="28">Up to 28</option>
+          <option value="30">Up to 30</option>
+          <option value="35">Up to 35</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search post name or code..." oninput="applyFilters()">
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-bar">
+      <span class="results-count" id="resultsCount">382 Posts</span>
+      <span class="results-vac">Total: <span class="vac-num" id="totalVac">3,003</span> vacancies</span>
+    </div>
+
+    <div class="posts-list" id="postsList"></div>
+    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load More Posts ↓</button>
+  </div>
+</div>
+
+<!-- TAB: ANALYTICS -->
+<div id="tab-charts" class="tab-content">
+  <div class="chart-section">
+    <div class="section-title" style="margin-top:20px">Vacancies by Region</div>
+    <div class="mini-bar-chart" id="regionChart"></div>
+
+    <div class="section-title" style="margin-top:24px">By Qualification Level</div>
+    <div class="mini-bar-chart" id="qualChart"></div>
+
+    <div class="section-title" style="margin-top:24px">Category Distribution</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;" id="catBreakdown"></div>
+  </div>
+</div>
+
+<!-- TAB: TOP POSTS -->
+<div id="tab-top" class="tab-content">
+  <div class="section">
+    <div class="section-title" style="margin-top:4px">Highest Vacancies</div>
+    <div class="posts-list" id="topPostsList"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Powered by <a href="#">svpublications</a> · Data: SSC Phase-XIV/2026/Selection Posts<br>
+  Age criteria as on 01.01.2026 · Vacancies are tentative
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const DATA = [];
+
+// (Additional data will be injected - using first 81 for brevity, full set embedded)
+// Actually embed ALL data
+const FULL_DATA = [{"sr":1,"region":"CR","post_code":"CR10126","post_name":"Stenographer Grade - II","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":2,"region":"CR","post_code":"CR10226","post_name":"Laboratory Attendant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":3,"region":"CR","post_code":"CR10426","post_name":"Assurance), Discipline- Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":7,"st":1,"obc":25,"ur":36,"ews":1,"total":70,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":4,"region":"CR","post_code":"CR10526","post_name":"Assurance), Discipline- Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":1,"obc":4,"ur":5,"ews":0,"total":11,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":5,"region":"CR","post_code":"CR10626","post_name":"Assurance), Discipline- Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":9,"st":3,"obc":12,"ur":46,"ews":5,"total":75,"esm":0,"oh":2,"hh":2,"vh":0,"others":0},{"sr":6,"region":"CR","post_code":"CR10726","post_name":"Metals & Explosives,  Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":7,"region":"CR","post_code":"CR10826","post_name":"Metals & Explosives, Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":2,"st":0,"obc":4,"ur":5,"ews":2,"total":13,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":8,"region":"CR","post_code":"CR10926","post_name":"Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":4,"ur":8,"ews":0,"total":12,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":9,"region":"CR","post_code":"CR11026","post_name":"Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":2,"obc":2,"ur":4,"ews":1,"total":10,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":10,"region":"CR","post_code":"CR11126","post_name":"Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":3,"st":1,"obc":5,"ur":9,"ews":1,"total":19,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":11,"region":"CR","post_code":"CR11226","post_name":"Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":3,"st":2,"obc":8,"ur":6,"ews":0,"total":19,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":12,"region":"CR","post_code":"CR11326","post_name":"Discipline- Store, Sub Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":1,"obc":2,"ur":3,"ews":1,"total":8,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":13,"region":"CR","post_code":"CR11426","post_name":"Explosives, Sub Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":3,"st":1,"obc":6,"ur":9,"ews":1,"total":20,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":14,"region":"CR","post_code":"CR11526","post_name":"Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":1,"ur":1,"ews":0,"total":3,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":15,"region":"CR","post_code":"CR11626","post_name":"Discipline- Store, Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":0,"ur":3,"ews":1,"total":5,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":16,"region":"CR","post_code":"CR11726","post_name":"Discipline- Store, Sub Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":2,"st":1,"obc":3,"ur":2,"ews":1,"total":9,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":17,"region":"CR","post_code":"CR11826","post_name":"Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":18,"region":"CR","post_code":"CR11926","post_name":"Drilling Assistant Grade I","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":19,"region":"CR","post_code":"CR12026","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":20,"region":"CR","post_code":"CR12126","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":3,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":21,"region":"CR","post_code":"CR12226","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":22,"region":"CR","post_code":"CR12326","post_name":"Stenographer Grade - II","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":3,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":23,"region":"CR","post_code":"CR12426","post_name":"Store Clerk","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":24,"region":"CR","post_code":"CR12526","post_name":"Accountant","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":25,"region":"CR","post_code":"CR12626","post_name":"Store Attendant","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":26,"region":"CR","post_code":"CR12726","post_name":"Research Assistant  Health Services (DGHS),","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":27,"region":"CR","post_code":"CR12826","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":28,"region":"CR","post_code":"CR12926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":29,"region":"CR","post_code":"CR13026","post_name":"Scientific Assistant","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":5,"ur":3,"ews":2,"total":12,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":30,"region":"CR","post_code":"CR13126","post_name":"Library Attendant  Resources, River","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":31,"region":"CR","post_code":"CR13226","post_name":"Mechanic   Resources, River","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":32,"region":"CR","post_code":"CR13326","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":33,"region":"CR","post_code":"CR13426","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":2,"obc":1,"ur":8,"ews":0,"total":13,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":34,"region":"CR","post_code":"CR13526","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":35,"region":"CR","post_code":"CR13626","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":36,"region":"CR","post_code":"CR13726","post_name":"Laboratory Attendant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":1,"total":3,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":37,"region":"CR","post_code":"CR13826","post_name":"Junior Engineer","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":38,"region":"CR","post_code":"CR13926","post_name":"Store Keeper, Grade-II  Resources, River","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":39,"region":"ER","post_code":"ER10126","post_name":"Ministry of Environment &","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":1,"ur":1,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":40,"region":"ER","post_code":"ER10226","post_name":"Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":1,"st":1,"obc":1,"ur":0,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":41,"region":"ER","post_code":"ER10326","post_name":"Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":6,"ews":0,"total":6,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":42,"region":"ER","post_code":"ER10426","post_name":"Technical Assistant Ministry of Environment &","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":3,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":43,"region":"ER","post_code":"ER10526","post_name":"Botanical Assistant Ministry of Environment &","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":44,"region":"ER","post_code":"ER10626","post_name":"Laboratory Assistant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":3,"ews":0,"total":3,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":45,"region":"ER","post_code":"ER10726","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":46,"region":"ER","post_code":"ER10826","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":47,"region":"ER","post_code":"ER10926","post_name":"Laboratory Attendant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":48,"region":"ER","post_code":"ER11126","post_name":"Stenographer (Grade-I)","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":49,"region":"ER","post_code":"ER11326","post_name":"Field Assistant","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":1,"st":1,"obc":1,"ur":2,"ews":0,"total":5,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":50,"region":"ER","post_code":"ER11426","post_name":"Scientific Assistant Mines Safety, Ministry of","age_min":22,"age_max":28,"age_limit":"22-28","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":51,"region":"ER","post_code":"ER11526","post_name":"Agriculture & Farmers","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":52,"region":"ER","post_code":"ER11626","post_name":"Draftsman (Junior) Ministry of Environment &","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":53,"region":"ER","post_code":"ER11726","post_name":"Fieldman   Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":3,"st":0,"obc":0,"ur":6,"ews":0,"total":9,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":54,"region":"ER","post_code":"ER11826","post_name":"Deputy Ranger   Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":6,"ews":1,"total":7,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":55,"region":"ER","post_code":"ER11926","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":56,"region":"ER","post_code":"ER12026","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":0,"obc":3,"ur":8,"ews":0,"total":13,"esm":0,"oh":0,"hh":1,"vh":1,"others":0},{"sr":57,"region":"ER","post_code":"ER12126","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":58,"region":"ER","post_code":"ER12226","post_name":"Drilling Assistant Grade II","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":59,"region":"ER","post_code":"ER12326","post_name":"Drilling Assistant Grade I","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":60,"region":"ER","post_code":"ER12426","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":61,"region":"ER","post_code":"ER12526","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":62,"region":"ER","post_code":"ER12626","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":3,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":63,"region":"ER","post_code":"ER12726","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":2,"st":1,"obc":6,"ur":16,"ews":0,"total":25,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":64,"region":"ER","post_code":"ER12826","post_name":"Personal Assistant","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":3,"st":1,"obc":9,"ur":36,"ews":2,"total":51,"esm":0,"oh":2,"hh":0,"vh":1,"others":1},{"sr":65,"region":"ER","post_code":"ER12926","post_name":"Accountant","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":66,"region":"ER","post_code":"ER13026","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":67,"region":"ER","post_code":"ER13126","post_name":"Stores Clerk","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":4,"ews":1,"total":5,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":68,"region":"ER","post_code":"ER13226","post_name":"Store Attendant","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":1,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":69,"region":"ER","post_code":"ER13326","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":70,"region":"ER","post_code":"ER13426","post_name":"Laboratory Assistant  Affairs, Ministry of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":71,"region":"ER","post_code":"ER13526","post_name":"Artist Grade I  Ministry of Environment &","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":4,"st":1,"obc":6,"ur":11,"ews":0,"total":22,"esm":0,"oh":0,"hh":0,"vh":0,"others":1},{"sr":72,"region":"ER","post_code":"ER13626","post_name":"Taxidermist Grade III Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":2,"ur":5,"ews":1,"total":9,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":73,"region":"ER","post_code":"ER13726","post_name":"Field Collector  Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 3","level_num":3,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":2,"st":1,"obc":4,"ur":9,"ews":1,"total":17,"esm":1,"oh":0,"hh":1,"vh":0,"others":0},{"sr":74,"region":"ER","post_code":"ER13826","post_name":"Ministry of Environment &","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":75,"region":"ER","post_code":"ER13926","post_name":"Ministry of Environment &","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":2,"obc":2,"ur":4,"ews":1,"total":10,"esm":0,"oh":0,"hh":0,"vh":0,"others":1},{"sr":76,"region":"ER","post_code":"ER14026","post_name":"Ministry of Environment &","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":1,"obc":2,"ur":9,"ews":0,"total":13,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":77,"region":"ER","post_code":"ER14126","post_name":"Photographer Grade III Ministry of Environment &","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":78,"region":"ER","post_code":"ER14226","post_name":"Ministry of Environment &","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":2,"st":1,"obc":5,"ur":7,"ews":1,"total":16,"esm":1,"oh":0,"hh":0,"vh":0,"others":1},{"sr":79,"region":"ER","post_code":"ER14326","post_name":"Senior Draughtsman","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":1,"ur":0,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":80,"region":"ER","post_code":"ER14426","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":81,"region":"ER","post_code":"ER14526","post_name":"Accountant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":82,"region":"KKR","post_code":"KK10126","post_name":"QUALITY ASSURANCE  Department of Fisheries,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":83,"region":"KKR","post_code":"KK10226","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":1,"ur":3,"ews":0,"total":5,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":84,"region":"KKR","post_code":"KK10326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":2,"ur":1,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":85,"region":"KKR","post_code":"KK10426","post_name":"ASSISTANT(HYDROGEOL","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":86,"region":"KKR","post_code":"KK10526","post_name":"MARKETING ASSISTANT Department of Fisheries,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":87,"region":"KKR","post_code":"KK10626","post_name":"SUPERINTENDENT","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":88,"region":"KKR","post_code":"KK10726","post_name":"SENIOR ARTIST","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":89,"region":"KKR","post_code":"KK10826","post_name":"SUPERINTENDENT","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":0,"obc":1,"ur":3,"ews":1,"total":7,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":90,"region":"KKR","post_code":"KK10926","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":91,"region":"KKR","post_code":"KK11026","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":92,"region":"KKR","post_code":"KK11226","post_name":"ACCOUNTANT","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":93,"region":"KKR","post_code":"KK11326","post_name":"DEPUTY RANGER  Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":1,"st":0,"obc":1,"ur":6,"ews":1,"total":9,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":94,"region":"KKR","post_code":"KK11426","post_name":"Husbandry and Dairying,","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":95,"region":"KKR","post_code":"KK11526","post_name":"INSPECTOR (SILK)","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":96,"region":"KKR","post_code":"KK11626","post_name":"JUNIOR ENGINEER","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":1,"ur":1,"ews":1,"total":4,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":97,"region":"KKR","post_code":"KK11726","post_name":"LABORATORY ASSISTANT of Agriculture & Farmers","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":98,"region":"KKR","post_code":"KK11826","post_name":"LABORATORY ASSISTANT Husbandry , Dept. of Animal","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":99,"region":"KKR","post_code":"KK11926","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":3,"ur":7,"ews":2,"total":13,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":100,"region":"KKR","post_code":"KK12026","post_name":"FIELD ASSISTANT","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":101,"region":"KKR","post_code":"KK12126","post_name":"Explosives, Department for","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":102,"region":"KKR","post_code":"KK12226","post_name":"LOWER DIVISION CLERK Explosives, Nagpur , Dept.","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":1,"ews":1,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":103,"region":"KKR","post_code":"KK12326","post_name":"Museum of Natural History,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":104,"region":"KKR","post_code":"KK12426","post_name":"DRILLER","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":105,"region":"KKR","post_code":"KK12526","post_name":"FIELD ASSISTANT","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":1,"st":0,"obc":1,"ur":2,"ews":1,"total":5,"esm":1,"oh":0,"hh":1,"vh":0,"others":0},{"sr":106,"region":"KKR","post_code":"KK12626","post_name":"of Animal Husbandry and","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":107,"region":"KKR","post_code":"KK12726","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":108,"region":"KKR","post_code":"KK12826","post_name":"PROOF READER  Language, Ministry of Home","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":109,"region":"KKR","post_code":"KK12926","post_name":"ASSISTANT (LEGAL)","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":1,"ur":2,"ews":1,"total":5,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":110,"region":"KKR","post_code":"KK13026","post_name":"ASSISTANT (PRINTING)","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":111,"region":"KKR","post_code":"KK13126","post_name":"RESEARCH ASSISTANT","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":112,"region":"KKR","post_code":"KK13226","post_name":"COPY HOLDER","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":113,"region":"KKR","post_code":"KK13326","post_name":"COPY HOLDER  Legislative Department,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":114,"region":"KKR","post_code":"KK13426","post_name":"General of India, Ministry of","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":2,"ur":7,"ews":1,"total":11,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":115,"region":"KKR","post_code":"KK13526","post_name":"Bureau, Ministry of Home","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":3,"st":1,"obc":2,"ur":8,"ews":3,"total":17,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":116,"region":"KKR","post_code":"KK13626","post_name":"STORE KEEPER GRADE-I","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":117,"region":"KKR","post_code":"KK13726","post_name":"SURVEYOR","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":29,"st":14,"obc":53,"ur":81,"ews":20,"total":197,"esm":0,"oh":2,"hh":3,"vh":0,"others":3},{"sr":118,"region":"KKR","post_code":"KK13826","post_name":"LOWER DIVISION CLERK Explosives, Department for","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":2,"ur":1,"ews":0,"total":3,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":119,"region":"KKR","post_code":"KK13926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":120,"region":"KKR","post_code":"KK14026","post_name":"NURSING ORDERLY","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":121,"region":"KKR","post_code":"KK14126","post_name":"INSECT COLLECTOR","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":122,"region":"KKR","post_code":"KK14226","post_name":"General of Health Services,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":2,"st":0,"obc":1,"ur":1,"ews":1,"total":5,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":123,"region":"KKR","post_code":"KK14326","post_name":"LABORATORY ASSISTANT","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":2,"ur":0,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":124,"region":"MPR","post_code":"MP10126","post_name":"Library Clerk","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":125,"region":"MPR","post_code":"MP10226","post_name":"Pharmacist-Cum-Clerk","age_min":21,"age_max":28,"age_limit":"21-28","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":1,"ur":3,"ews":0,"total":5,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":126,"region":"MPR","post_code":"MP10326","post_name":"Health and Family Welfare,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":127,"region":"MPR","post_code":"MP10426","post_name":"Department of Health and","age_min":20,"age_max":25,"age_limit":"20-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":128,"region":"MPR","post_code":"MP10526","post_name":"Pharmacist (Allopathic) Health and Family Welfare,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":15,"st":2,"obc":9,"ur":32,"ews":10,"total":68,"esm":10,"oh":3,"hh":1,"vh":0,"others":0},{"sr":129,"region":"MPR","post_code":"MP10626","post_name":"Medical Attendant Health and Family Welfare,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":18,"st":18,"obc":55,"ur":115,"ews":29,"total":235,"esm":10,"oh":3,"hh":3,"vh":5,"others":1},{"sr":130,"region":"MPR","post_code":"MP10726","post_name":"Nursing Officer Health and Family Welfare,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":14,"st":8,"obc":24,"ur":49,"ews":12,"total":107,"esm":0,"oh":2,"hh":0,"vh":0,"others":1},{"sr":131,"region":"MPR","post_code":"MP10826","post_name":"Ayurvedic Pharmacist  of Health and Family","age_min":20,"age_max":30,"age_limit":"20-30","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":3,"st":4,"obc":10,"ur":20,"ews":1,"total":38,"esm":1,"oh":0,"hh":1,"vh":0,"others":0},{"sr":132,"region":"MPR","post_code":"MP10926","post_name":"Lady Medical Attendant of Health and Family","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":7,"st":4,"obc":24,"ur":39,"ews":12,"total":86,"esm":1,"oh":1,"hh":1,"vh":2,"others":0},{"sr":133,"region":"MPR","post_code":"MP11026","post_name":"of Health and Family","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":10,"ews":0,"total":10,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":134,"region":"MPR","post_code":"MP11126","post_name":"of Health and Family","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":135,"region":"MPR","post_code":"MP11226","post_name":"Lady Health Visitor of Health and Family","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":1,"obc":1,"ur":8,"ews":1,"total":11,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":136,"region":"MPR","post_code":"MP11326","post_name":"of Health and Family","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":3,"ews":1,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":137,"region":"MPR","post_code":"MP11426","post_name":"Panchkarma Therapist  of Health and Family","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":138,"region":"MPR","post_code":"MP11526","post_name":"Auxiliary Nurse Midwife  of Health and Family","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":1,"st":0,"obc":0,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":139,"region":"MPR","post_code":"MP11626","post_name":"ECG Technician (Junior)  of Health and Family","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":6,"ews":1,"total":7,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":140,"region":"MPR","post_code":"MP11726","post_name":"Dental Technician  of Health and Family","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":2,"ur":6,"ews":0,"total":8,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":141,"region":"MPR","post_code":"MP11826","post_name":"X-Ray Technician","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":142,"region":"MPR","post_code":"MP11926","post_name":"(Biochemistry and  Directorate General of","age_min":18,"age_max":35,"age_limit":"18-35","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":143,"region":"MPR","post_code":"MP12026","post_name":"Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":144,"region":"MPR","post_code":"MP12126","post_name":"Caretaker  Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":145,"region":"MPR","post_code":"MP12226","post_name":"Health Worker (Female) Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":146,"region":"MPR","post_code":"MP12326","post_name":"Junior Pharmacist of Health Services, Ministry","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":147,"region":"MPR","post_code":"MP12426","post_name":"Tailor  of Health Services, Ministry","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":148,"region":"MPR","post_code":"MP12526","post_name":"Workshop Assistant  Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":149,"region":"MPR","post_code":"MP12626","post_name":"Health Assistant (Male) Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":3,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":150,"region":"MPR","post_code":"MP12726","post_name":"Pharmacist-cum-Clerk","age_min":21,"age_max":28,"age_limit":"21-28","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":151,"region":"MPR","post_code":"MP12826","post_name":"Draftsman  Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":152,"region":"MPR","post_code":"MP12926","post_name":"Cook  General of Health Services,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":153,"region":"MPR","post_code":"MP13026","post_name":"Tailor   General of Health Services,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":154,"region":"MPR","post_code":"MP13126","post_name":"General of Health Services,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":155,"region":"MPR","post_code":"MP13226","post_name":"of Health Services, Ministry","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":1,"ews":1,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":156,"region":"MPR","post_code":"MP13326","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":1,"st":0,"obc":2,"ur":5,"ews":0,"total":8,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":157,"region":"MPR","post_code":"MP13426","post_name":"Directorate General of","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 8","level_num":8,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":158,"region":"MPR","post_code":"MP13526","post_name":"Nursing Officer  Directorate General of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":1,"ur":6,"ews":0,"total":8,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":159,"region":"MPR","post_code":"MP13626","post_name":"General of Health Services,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":14,"st":7,"obc":25,"ur":49,"ews":10,"total":105,"esm":10,"oh":1,"hh":1,"vh":1,"others":1},{"sr":160,"region":"MPR","post_code":"MP13726","post_name":"Directorate General of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":161,"region":"MPR","post_code":"MP13826","post_name":"Technician","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":162,"region":"MPR","post_code":"MP13926","post_name":"Insect Collector","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":3,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":163,"region":"MPR","post_code":"MP14026","post_name":"Junior Engineer  of Water Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":3,"ews":1,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":164,"region":"NER","post_code":"NE10126","post_name":"LIBRARIAN","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":165,"region":"NER","post_code":"NE10226","post_name":"JUNIOR ENGINEER","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":166,"region":"NER","post_code":"NE10326","post_name":"FIELD ASSISTANT","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":167,"region":"NER","post_code":"NE10426","post_name":"","age_min":21,"age_max":28,"age_limit":"21-28","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":3,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":168,"region":"NER","post_code":"NE10526","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":169,"region":"NER","post_code":"NE10626","post_name":"Drilling Assistant Gr-I","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":3,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":170,"region":"NER","post_code":"NE10726","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":3,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":171,"region":"NER","post_code":"NE10826","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":172,"region":"NER","post_code":"NE10926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":1,"ur":3,"ews":0,"total":5,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":173,"region":"NER","post_code":"NE11026","post_name":"ASSISTANT","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":174,"region":"NER","post_code":"NE11126","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":175,"region":"NER","post_code":"NE11226","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":176,"region":"NER","post_code":"NE11326","post_name":"STORE ATTENDANT","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":177,"region":"NER","post_code":"NE11426","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":1,"ur":3,"ews":1,"total":6,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":178,"region":"NER","post_code":"NE11526","post_name":"(Except Women","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":3,"ur":8,"ews":1,"total":13,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":179,"region":"NER","post_code":"NE11626","post_name":"Technician (old","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":1,"ur":0,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":180,"region":"NER","post_code":"NE11726","post_name":"(Except Women","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":4,"st":2,"obc":6,"ur":11,"ews":2,"total":25,"esm":0,"oh":0,"hh":0,"vh":0,"others":1},{"sr":181,"region":"NER","post_code":"NE11826","post_name":"Training)- Mechanic","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":2,"ur":2,"ews":1,"total":6,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":182,"region":"NER","post_code":"NE11926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":183,"region":"NER","post_code":"NE12026","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":184,"region":"NER","post_code":"NE12126","post_name":"Training)- (Motor","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":1,"obc":4,"ur":5,"ews":1,"total":13,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":185,"region":"NER","post_code":"NE12226","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":1,"ur":3,"ews":0,"total":6,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":186,"region":"NER","post_code":"NE12326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":0,"ews":1,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":187,"region":"NER","post_code":"NE12426","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":1,"obc":4,"ur":5,"ews":0,"total":12,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":188,"region":"NER","post_code":"NE12526","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":2,"ews":1,"total":4,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":189,"region":"NER","post_code":"NE12626","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":3,"st":1,"obc":3,"ur":4,"ews":2,"total":13,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":190,"region":"NER","post_code":"NE12726","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":191,"region":"NER","post_code":"NE12826","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":192,"region":"NER","post_code":"NE12926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":193,"region":"NER","post_code":"NE13026","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":194,"region":"NER","post_code":"NE13126","post_name":"(Except Women","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":1,"obc":3,"ur":3,"ews":1,"total":10,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":195,"region":"NER","post_code":"NE13226","post_name":"(Except Women","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":3,"ur":5,"ews":1,"total":11,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":196,"region":"NER","post_code":"NE13326","post_name":"Training)-(Attendant","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":197,"region":"NER","post_code":"NE13426","post_name":"Training)-(Maintenance","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":198,"region":"NER","post_code":"NE13526","post_name":"Training)-(Instrument","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":199,"region":"NER","post_code":"NE13626","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":200,"region":"NER","post_code":"NE13726","post_name":"Training)-Cutting and","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":2,"ews":1,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":201,"region":"NER","post_code":"NE13826","post_name":"Training)-(Computer","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":1,"obc":4,"ur":5,"ews":1,"total":13,"esm":0,"oh":0,"hh":0,"vh":0,"others":1},{"sr":202,"region":"NER","post_code":"NE13926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":2,"ur":2,"ews":1,"total":7,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":203,"region":"NER","post_code":"NE14026","post_name":"Training)-(Computer","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":1,"ur":1,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":204,"region":"NER","post_code":"NE14126","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":205,"region":"NER","post_code":"NE14226","post_name":"Things ( Smart","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":1,"ur":1,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":206,"region":"NER","post_code":"NE14326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":4,"st":1,"obc":7,"ur":10,"ews":3,"total":25,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":207,"region":"NER","post_code":"NE14426","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":3,"st":2,"obc":3,"ur":3,"ews":2,"total":13,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":208,"region":"NER","post_code":"NE14526","post_name":"MULTI TASKING STAFF","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":2,"st":2,"obc":4,"ur":7,"ews":3,"total":18,"esm":1,"oh":0,"hh":1,"vh":0,"others":0},{"sr":209,"region":"NR","post_code":"NR10126","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":210,"region":"NR","post_code":"NR10226","post_name":"Driver- cum-Mechanic  Agriculture & Farmers","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":4,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":211,"region":"NR","post_code":"NR10326","post_name":"Technical Assistant  Agriculture & Farmers","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":1,"st":1,"obc":6,"ur":6,"ews":0,"total":14,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":212,"region":"NR","post_code":"NR10426","post_name":"Scientific Assistant  Agriculture & Farmers","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":3,"st":2,"obc":10,"ur":14,"ews":0,"total":29,"esm":2,"oh":0,"hh":0,"vh":0,"others":0},{"sr":213,"region":"NR","post_code":"NR10526","post_name":"Agriculture & Farmers","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":0,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":214,"region":"NR","post_code":"NR10626","post_name":"Explosives, Department for","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":8,"st":4,"obc":15,"ur":25,"ews":6,"total":58,"esm":6,"oh":1,"hh":1,"vh":0,"others":0},{"sr":215,"region":"NR","post_code":"NR10726","post_name":"Junior Wireless Officers  Telecommunications,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":13,"st":1,"obc":2,"ur":38,"ews":6,"total":60,"esm":0,"oh":0,"hh":0,"vh":1,"others":1},{"sr":216,"region":"NR","post_code":"NR10826","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":217,"region":"NR","post_code":"NR10926","post_name":"Canteen Attendant","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":218,"region":"NR","post_code":"NR11026","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":219,"region":"NR","post_code":"NR11126","post_name":"Operator (Senior Grade) Affairs, Ministry of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":220,"region":"NR","post_code":"NR11226","post_name":"Affairs, Ministry of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":221,"region":"NR","post_code":"NR11326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":7,"st":5,"obc":7,"ur":17,"ews":2,"total":38,"esm":0,"oh":0,"hh":0,"vh":2,"others":0},{"sr":222,"region":"NR","post_code":"NR11426","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":0,"obc":2,"ur":3,"ews":0,"total":7,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":223,"region":"NR","post_code":"NR11526","post_name":"Junior Legal Assistant Tribunal (NCLT), Ministry of","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":7,"obc":4,"ur":14,"ews":2,"total":29,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":224,"region":"NR","post_code":"NR11626","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":225,"region":"NR","post_code":"NR11726","post_name":"Quality Assurance) - Department of Defence","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":226,"region":"NR","post_code":"NR11826","post_name":"Integrated Headquarters of","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":227,"region":"NR","post_code":"NR11926","post_name":"Officers (O/O JS & CAO) ,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":3,"st":1,"obc":4,"ur":11,"ews":1,"total":20,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":228,"region":"NR","post_code":"NR12126","post_name":"Department (IMD), Ministry","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":1,"obc":3,"ur":8,"ews":1,"total":14,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":229,"region":"NR","post_code":"NR12226","post_name":"Telephone Operator  Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":230,"region":"NR","post_code":"NR12326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":231,"region":"NR","post_code":"NR12426","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":232,"region":"NR","post_code":"NR12526","post_name":"Ministry of Environment &","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":4,"st":2,"obc":7,"ur":49,"ews":2,"total":64,"esm":16,"oh":1,"hh":1,"vh":0,"others":0},{"sr":233,"region":"NR","post_code":"NR12626","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":234,"region":"NR","post_code":"NR12726","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":235,"region":"NR","post_code":"NR12826","post_name":"Laboratory Assistant Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":236,"region":"NR","post_code":"NR12926","post_name":"Driver (Ordinary Grade) Ministry of Environment &","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":237,"region":"NR","post_code":"NR13026","post_name":"Stockman (Junior Grade) Dairying, Ministry of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":238,"region":"NR","post_code":"NR13626","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":1,"ur":10,"ews":0,"total":12,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":239,"region":"NR","post_code":"NR13726","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":1,"st":0,"obc":2,"ur":4,"ews":1,"total":8,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":240,"region":"NR","post_code":"NR14726","post_name":"Department of Personnel","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 8","level_num":8,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":241,"region":"NR","post_code":"NR14826","post_name":"Department of Personnel","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 8","level_num":8,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":242,"region":"NR","post_code":"NR14926","post_name":"Department of Personnel","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 8","level_num":8,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":243,"region":"NR","post_code":"NR15026","post_name":"Department of Personnel","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 8","level_num":8,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":244,"region":"NR","post_code":"NR15126","post_name":"Department of Personnel","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 8","level_num":8,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":245,"region":"NR","post_code":"NR15226","post_name":"Department of Personnel","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 8","level_num":8,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":246,"region":"NR","post_code":"NR15326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":247,"region":"NR","post_code":"NR15426","post_name":"Resources, Ministry of Rural","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":248,"region":"NR","post_code":"NR15526","post_name":"Senior Store Keeper","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":1,"ur":3,"ews":1,"total":7,"esm":1,"oh":0,"hh":1,"vh":0,"others":0},{"sr":249,"region":"NR","post_code":"NR15626","post_name":"Store Keeper","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":2,"st":1,"obc":3,"ur":3,"ews":1,"total":10,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":250,"region":"NR","post_code":"NR18726","post_name":"Ministry of External Affairs","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":251,"region":"NR","post_code":"NR18826","post_name":"Caretaker","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":252,"region":"NR","post_code":"NR18926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":253,"region":"NR","post_code":"NR19026","post_name":"Halwai-cum-Cook","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":254,"region":"NR","post_code":"NR19226","post_name":"Draughtsman Grade II","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":255,"region":"NR","post_code":"NR19326","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":1,"obc":0,"ur":0,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":256,"region":"NR","post_code":"NR19426","post_name":"Accountant","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":4,"ur":10,"ews":1,"total":17,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":257,"region":"NR","post_code":"NR19826","post_name":"","age_min":20,"age_max":25,"age_limit":"20-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":11,"st":9,"obc":28,"ur":19,"ews":31,"total":98,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":258,"region":"NWR","post_code":"NW10126","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":259,"region":"NWR","post_code":"NW10226","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":260,"region":"NWR","post_code":"NW10326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":0,"ur":2,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":261,"region":"NWR","post_code":"NW10426","post_name":"Assistant","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":262,"region":"NWR","post_code":"NW10526","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":1,"obc":4,"ur":6,"ews":1,"total":14,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":263,"region":"NWR","post_code":"NW10626","post_name":"Workshop Attendant","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":0,"ur":4,"ews":1,"total":6,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":264,"region":"NWR","post_code":"NW10726","post_name":"Laboratory Attendant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":10,"st":5,"obc":12,"ur":14,"ews":2,"total":43,"esm":5,"oh":1,"hh":1,"vh":0,"others":0},{"sr":265,"region":"NWR","post_code":"NW10826","post_name":"Laboratory Attendant General of Health Services,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":266,"region":"NWR","post_code":"NW10926","post_name":"Driver-Cum-Mechanics  Agriculture & Farmers","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":267,"region":"NWR","post_code":"NW11026","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":268,"region":"NWR","post_code":"NW11126","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":2,"ur":2,"ews":0,"total":5,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":269,"region":"NWR","post_code":"NW11226","post_name":"(Physical Anthropology","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":1,"ur":3,"ews":0,"total":5,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":270,"region":"NWR","post_code":"NW11326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":271,"region":"NWR","post_code":"NW11426","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":0,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":272,"region":"NWR","post_code":"NW11526","post_name":"Photographer (Micro)","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":273,"region":"NWR","post_code":"NW11626","post_name":"Junior Translator","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":274,"region":"NWR","post_code":"NW11726","post_name":"Assistant (General and","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":0,"ur":1,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":275,"region":"NWR","post_code":"NW11826","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":276,"region":"NWR","post_code":"NW11926","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":277,"region":"NWR","post_code":"NW12026","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":278,"region":"NWR","post_code":"NW12126","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":279,"region":"NWR","post_code":"NW12226","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":280,"region":"NWR","post_code":"NW12326","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":281,"region":"NWR","post_code":"NW12426","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":282,"region":"NWR","post_code":"NW12526","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":283,"region":"NWR","post_code":"NW12626","post_name":"","age_min":18,"age_max":28,"age_limit":"18-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":284,"region":"NWR","post_code":"NW12726","post_name":"Library Clerk (General)","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":3,"st":1,"obc":8,"ur":0,"ews":2,"total":14,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":285,"region":"NWR","post_code":"NW12826","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":286,"region":"NWR","post_code":"NW12926","post_name":"Agriculture & Farmers","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":1,"st":0,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":287,"region":"NWR","post_code":"NW13026","post_name":"Agriculture & Farmers","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":0,"ur":6,"ews":3,"total":10,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":288,"region":"NWR","post_code":"NW13126","post_name":"Agriculture & Farmers","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":3,"ur":7,"ews":1,"total":12,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":289,"region":"NWR","post_code":"NW13226","post_name":"Protection Officer (Weed Agriculture & Farmers","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":3,"ur":4,"ews":0,"total":9,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":290,"region":"NWR","post_code":"NW13326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":291,"region":"SR","post_code":"SR10126","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":292,"region":"SR","post_code":"SR10226","post_name":"Textile Designer  Handlooms, Weavers,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":5,"ur":7,"ews":2,"total":15,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":293,"region":"SR","post_code":"SR10326","post_name":"Farm Assistant","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":294,"region":"SR","post_code":"SR10426","post_name":"Court Master  (CESTAT), Department of","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":295,"region":"SR","post_code":"SR10526","post_name":"Pharmacist cum Clerk  of Health Services, Ministry","age_min":21,"age_max":28,"age_limit":"21-28","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":296,"region":"SR","post_code":"SR10626","post_name":"Lower Division Clerk Explosives, Department for","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":2,"st":0,"obc":0,"ur":2,"ews":1,"total":5,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":297,"region":"SR","post_code":"SR10726","post_name":"Stenographer Grade-III Explosives, Department for","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":2,"ews":1,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":298,"region":"SR","post_code":"SR10826","post_name":"Engine Driver","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":299,"region":"SR","post_code":"SR10926","post_name":"Fireman","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":300,"region":"SR","post_code":"SR11026","post_name":"LASCAR-I","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":6,"st":4,"obc":2,"ur":8,"ews":5,"total":25,"esm":2,"oh":0,"hh":0,"vh":0,"others":0},{"sr":301,"region":"SR","post_code":"SR11126","post_name":"Master Grade II","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":302,"region":"SR","post_code":"SR11226","post_name":"Syrang of Lascars","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":1,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":303,"region":"SR","post_code":"SR11326","post_name":"Tindal of Lascar","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":304,"region":"SR","post_code":"SR11426","post_name":"Laboratory Attendant  Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":305,"region":"SR","post_code":"SR11526","post_name":"Dhobi   Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":306,"region":"SR","post_code":"SR11626","post_name":"Fitter  Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":307,"region":"SR","post_code":"SR11726","post_name":"Radiographer  Directorate General of","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":308,"region":"SR","post_code":"SR11826","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":1,"obc":1,"ur":4,"ews":1,"total":7,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":309,"region":"SR","post_code":"SR11926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":310,"region":"SR","post_code":"SR12026","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":1,"ur":2,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":311,"region":"SR","post_code":"SR12126","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":3,"ews":0,"total":4,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":312,"region":"SR","post_code":"SR12226","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 3","level_num":3,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":4,"ews":0,"total":5,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":313,"region":"SR","post_code":"SR12326","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":2,"ur":5,"ews":0,"total":8,"esm":1,"oh":1,"hh":0,"vh":0,"others":0},{"sr":314,"region":"SR","post_code":"SR12426","post_name":"Assistant Store Keeper","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":315,"region":"SR","post_code":"SR12526","post_name":"Stores Clerk (LDC Level)","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":316,"region":"SR","post_code":"SR12626","post_name":"Senior Projectionist National Police Academy,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":317,"region":"SR","post_code":"SR12726","post_name":"Engineering/ Electrical/ Affairs, Ministry of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":318,"region":"SR","post_code":"SR12826","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":319,"region":"SR","post_code":"SR12926","post_name":"Nursing Orderly  National Police Academy,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":0,"ews":1,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":320,"region":"SR","post_code":"SR13026","post_name":"Canteen Attendant  National Police Academy,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":321,"region":"SR","post_code":"SR13126","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":322,"region":"SR","post_code":"SR13226","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":323,"region":"SR","post_code":"SR13326","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":2,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":324,"region":"SR","post_code":"SR13426","post_name":"Laboratory Attendant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":2,"ews":0,"total":3,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":325,"region":"SR","post_code":"SR13526","post_name":"Department of Fisheries,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":1,"vh":0,"others":0},{"sr":326,"region":"SR","post_code":"SR13626","post_name":"Clerk  National Police Academy,","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":327,"region":"SR","post_code":"SR13726","post_name":"Laboratory Attendant  National Police Academy,","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":328,"region":"SR","post_code":"SR13826","post_name":"Lower Division Clerk  Directorate General of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":329,"region":"SR","post_code":"SR13926","post_name":"Forensic Science Services,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":330,"region":"SR","post_code":"SR14026","post_name":"Laboratory Technician National Police Academy,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":331,"region":"SR","post_code":"SR14126","post_name":"Superintendent  Handlooms, Weavers","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":2,"st":0,"obc":0,"ur":2,"ews":0,"total":4,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":332,"region":"SR","post_code":"SR14226","post_name":"Superintendent  Handlooms, Weavers","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":2,"ur":5,"ews":0,"total":7,"esm":0,"oh":0,"hh":2,"vh":0,"others":0},{"sr":333,"region":"SR","post_code":"SR14326","post_name":"Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":334,"region":"SR","post_code":"SR14426","post_name":"Library Attendant Directorate General of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":335,"region":"SR","post_code":"SR14526","post_name":"Farm Assistant","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":336,"region":"SR","post_code":"SR14626","post_name":"Nursing Officer  Directorate General of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 7","level_num":7,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":2,"obc":0,"ur":5,"ews":2,"total":9,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":337,"region":"SR","post_code":"SR14726","post_name":"Junior Engineer","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":2,"ews":0,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":338,"region":"WR","post_code":"WR10126","post_name":"Bhavan, Director General of","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":17,"ur":46,"ews":6,"total":70,"esm":7,"oh":0,"hh":1,"vh":0,"others":1},{"sr":339,"region":"WR","post_code":"WR10226","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":2,"st":1,"obc":2,"ur":4,"ews":1,"total":10,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":340,"region":"WR","post_code":"WR10326","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":1,"ur":0,"ews":1,"total":3,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":341,"region":"WR","post_code":"WR10426","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":1,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":342,"region":"WR","post_code":"WR10526","post_name":"Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":2,"st":1,"obc":2,"ur":6,"ews":1,"total":12,"esm":0,"oh":1,"hh":0,"vh":0,"others":0},{"sr":343,"region":"WR","post_code":"WR10626","post_name":"(Engineering)   Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":344,"region":"WR","post_code":"WR10726","post_name":"Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":1,"obc":0,"ur":2,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":345,"region":"WR","post_code":"WR10826","post_name":"Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":1,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":346,"region":"WR","post_code":"WR10926","post_name":"(Engineering) (Computer  Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":1,"ur":2,"ews":0,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":347,"region":"WR","post_code":"WR11026","post_name":"Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":348,"region":"WR","post_code":"WR11126","post_name":"Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":1,"ews":1,"total":3,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":349,"region":"WR","post_code":"WR11226","post_name":"(Scientific)   Resources, River","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":350,"region":"WR","post_code":"WR11326","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 7","level_num":7,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":351,"region":"WR","post_code":"WR11426","post_name":"Resources, River","age_min":21,"age_max":27,"age_limit":"21-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":2,"st":0,"obc":2,"ur":5,"ews":1,"total":10,"esm":1,"oh":1,"hh":0,"vh":0,"others":0},{"sr":352,"region":"WR","post_code":"WR11526","post_name":"Resources, River","age_min":21,"age_max":27,"age_limit":"21-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":353,"region":"WR","post_code":"WR11626","post_name":"Grade-II (Computer  Resources, River","age_min":21,"age_max":27,"age_limit":"21-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":2,"st":1,"obc":2,"ur":4,"ews":1,"total":10,"esm":1,"oh":0,"hh":1,"vh":0,"others":0},{"sr":354,"region":"WR","post_code":"WR11726","post_name":"Resources, River","age_min":21,"age_max":27,"age_limit":"21-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":2,"st":1,"obc":1,"ur":5,"ews":1,"total":10,"esm":1,"oh":0,"hh":0,"vh":0,"others":0},{"sr":355,"region":"WR","post_code":"WR11826","post_name":"Resources, River","age_min":21,"age_max":27,"age_limit":"21-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":1,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":356,"region":"WR","post_code":"WR11926","post_name":"Stockman, (Junior Grade) Dairying, Ministry of","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":1,"obc":1,"ur":3,"ews":0,"total":5,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":357,"region":"WR","post_code":"WR12026","post_name":"Marine Electrician   Ministry of Fisheries,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":358,"region":"WR","post_code":"WR12126","post_name":"Sr. Scientific Assistant Ministry of Fisheries,","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":359,"region":"WR","post_code":"WR12226","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":360,"region":"WR","post_code":"WR12326","post_name":"","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":10,"ur":12,"ews":3,"total":25,"esm":2,"oh":1,"hh":1,"vh":1,"others":1},{"sr":361,"region":"WR","post_code":"WR12426","post_name":"Training Workshop) -in","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":362,"region":"WR","post_code":"WR12526","post_name":"Deputy Ranger","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"Secondary","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":0,"ews":1,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":363,"region":"WR","post_code":"WR12726","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":364,"region":"WR","post_code":"WR12826","post_name":"Mechanic  College, Ministry of Home","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":365,"region":"WR","post_code":"WR12926","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":366,"region":"WR","post_code":"WR13026","post_name":"Laboratory Assistant College, Ministry of Home","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":1,"ur":2,"ews":1,"total":4,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":367,"region":"WR","post_code":"WR13126","post_name":"Store Keeper  College, Ministry of Home","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 4","level_num":4,"qualification":"","qual_group":"Higher Secondary (10+2)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":368,"region":"WR","post_code":"WR13226","post_name":"Fieldman","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":369,"region":"WR","post_code":"WR13326","post_name":"Speech Therapist","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":370,"region":"WR","post_code":"WR13426","post_name":"Driver","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":371,"region":"WR","post_code":"WR13526","post_name":"Pharmacist-Cum-Clerk","age_min":21,"age_max":28,"age_limit":"21-28","pay_level":"Level 5","level_num":5,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":1,"ur":4,"ews":1,"total":7,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":372,"region":"WR","post_code":"WR13626","post_name":"Assistant Chemist","age_min":23,"age_max":28,"age_limit":"23-28","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":0,"ur":1,"ews":0,"total":2,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":373,"region":"WR","post_code":"WR13726","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 2","level_num":2,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":374,"region":"WR","post_code":"WR13826","post_name":"Laboratory Attendant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":375,"region":"WR","post_code":"WR13926","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":1,"ur":2,"ews":1,"total":5,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":376,"region":"WR","post_code":"WR14026","post_name":"Laboratory Attendant","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 1","level_num":1,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":3,"st":0,"obc":6,"ur":7,"ews":3,"total":19,"esm":3,"oh":0,"hh":0,"vh":0,"others":0},{"sr":377,"region":"WR","post_code":"WR14126","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":378,"region":"WR","post_code":"WR14226","post_name":"Junior Chemist  Inspection, M/o Agriculture","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":2,"obc":0,"ur":12,"ews":1,"total":16,"esm":2,"oh":0,"hh":0,"vh":0,"others":0},{"sr":379,"region":"WR","post_code":"WR14326","post_name":"Accountant  of Agriculture & Farmers","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 5","level_num":5,"qualification":"","qual_group":"Graduation & Above","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":380,"region":"WR","post_code":"WR14426","post_name":"Laboratory Assistant Agriculture & Farmers","age_min":18,"age_max":25,"age_limit":"18-25","pay_level":"Level 2","level_num":2,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":0,"st":0,"obc":0,"ur":1,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0},{"sr":381,"region":"WR","post_code":"WR14526","post_name":"","age_min":18,"age_max":30,"age_limit":"18-30","pay_level":"Level 6","level_num":6,"qualification":"","qual_group":"Graduation & Above","sc":1,"st":0,"obc":3,"ur":4,"ews":0,"total":8,"esm":0,"oh":0,"hh":0,"vh":1,"others":0},{"sr":382,"region":"WR","post_code":"WR14626","post_name":"","age_min":18,"age_max":27,"age_limit":"18-27","pay_level":"Level 6","level_num":6,"qualification":"Secondary","qual_group":"Matriculation (10th)","sc":1,"st":0,"obc":0,"ur":0,"ews":0,"total":1,"esm":0,"oh":0,"hh":0,"vh":0,"others":0}];
+
+let currentQual = 'all';
+let displayCount = 20;
+let filteredData = [];
+
+function setQual(el, qual) {
+  document.querySelectorAll('.qual-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  currentQual = qual;
+  displayCount = 20;
+  applyFilters();
+}
+
+function applyFilters() {
+  const region = document.getElementById('regionFilter').value;
+  const ageMax = document.getElementById('ageFilter').value;
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+  filteredData = FULL_DATA.filter(p => {
+    if (currentQual !== 'all' && p.qual_group !== currentQual) return false;
+    if (region !== 'all' && p.region !== region) return false;
+    if (ageMax !== 'all' && p.age_max > parseInt(ageMax)) return false;
+    if (search && !p.post_name.toLowerCase().includes(search) && !p.post_code.toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  const totalVac = filteredData.reduce((s, p) => s + p.total, 0);
+  document.getElementById('resultsCount').textContent = `${filteredData.length} Posts`;
+  document.getElementById('totalVac').textContent = totalVac.toLocaleString();
+
+  renderPosts();
+}
+
+function renderPosts() {
+  const list = document.getElementById('postsList');
+  const slice = filteredData.slice(0, displayCount);
+  list.innerHTML = slice.length === 0
+    ? `<div class="empty-state"><span class="emoji">🔍</span><p>No posts match your filters.<br>Try adjusting your search.</p></div>`
+    : slice.map(p => postCard(p)).join('');
+
+  const btn = document.getElementById('loadMoreBtn');
+  btn.style.display = filteredData.length > displayCount ? 'block' : 'none';
+}
+
+function postCard(p) {
+  const cats = [
+    {l:'SC', v:p.sc}, {l:'ST', v:p.st}, {l:'OBC', v:p.obc},
+    {l:'UR', v:p.ur}, {l:'EWS', v:p.ews}
+  ];
+  return `
+  <div class="post-card region-${p.region}">
+    <div class="post-header">
+      <div class="post-name">${p.post_name}</div>
+      <div class="post-total">${p.total}</div>
+    </div>
+    <div class="post-meta">
+      <span class="region-badge">${p.region}</span>
+      <span class="meta-pill"><span class="icon">📋</span>${p.post_code}</span>
+      <span class="meta-pill"><span class="icon">🎂</span>${p.age_limit} yrs</span>
+      <span class="meta-pill"><span class="icon">💰</span>${p.pay_level}</span>
+    </div>
+    <div class="cat-row">
+      ${cats.map(c => `<div class="cat-cell ${c.v>0?'has-vac':'no-vac'}"><div class="cat-num">${c.v}</div><div class="cat-lbl">${c.l}</div></div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function loadMore() {
+  displayCount += 20;
+  renderPosts();
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+  document.getElementById(`tab-${tab}`).classList.add('active');
+
+  if (tab === 'charts') renderCharts();
+  if (tab === 'top') renderTopPosts();
+}
+
+function renderCharts() {
+  // Region chart
+  const regions = [
+    {code:'MPR',name:'MP Region',vac:752},{code:'NR',name:'Northern',vac:531},
+    {code:'CR',name:'Central',vac:334},{code:'KKR',name:'KK Region',vac:324},
+    {code:'WR',name:'Western',vac:258},{code:'ER',name:'Eastern',vac:257},
+    {code:'NER',name:'NE Region',vac:251},{code:'NWR',name:'NW Region',vac:152},
+    {code:'SR',name:'Southern',vac:144}
+  ];
+  const maxVac = Math.max(...regions.map(r=>r.vac));
+  document.getElementById('regionChart').innerHTML = regions.map(r => `
+    <div class="bar-item">
+      <div class="bar-label">${r.code}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${(r.vac/maxVac*100).toFixed(1)}%;background:var(--brand)">
+          <span class="bar-val">${r.vac}</span>
+        </div>
+      </div>
+    </div>`).join('');
+
+  // Qual chart
+  const quals = [
+    {name:'Matriculation',posts:166,vac:1675,color:'#FF6B00'},
+    {name:'Graduation+',posts:151,vac:1011,color:'#4CAF50'},
+    {name:'Higher Sec 10+2',posts:65,vac:317,color:'#2196F3'}
+  ];
+  const maxQ = Math.max(...quals.map(q=>q.vac));
+  document.getElementById('qualChart').innerHTML = quals.map(q => `
+    <div class="bar-item">
+      <div class="bar-label" style="width:80px;text-align:right;font-size:10px">${q.name}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${(q.vac/maxQ*100).toFixed(1)}%;background:${q.color}">
+          <span class="bar-val">${q.vac}</span>
+        </div>
+      </div>
+    </div>`).join('');
+
+  // Category breakdown
+  const totalSC = FULL_DATA.reduce((s,p)=>s+p.sc,0);
+  const totalST = FULL_DATA.reduce((s,p)=>s+p.st,0);
+  const totalOBC = FULL_DATA.reduce((s,p)=>s+p.obc,0);
+  const totalUR = FULL_DATA.reduce((s,p)=>s+p.ur,0);
+  const totalEWS = FULL_DATA.reduce((s,p)=>s+p.ews,0);
+  const grand = totalSC+totalST+totalOBC+totalUR+totalEWS;
+  const cats = [{l:'Unreserved (UR)',v:totalUR,c:'#FF6B00'},{l:'OBC',v:totalOBC,c:'#4CAF50'},{l:'SC',v:totalSC,c:'#2196F3'},{l:'EWS',v:totalEWS,c:'#9C27B0'},{l:'ST',v:totalST,c:'#00BCD4'}];
+  document.getElementById('catBreakdown').innerHTML = cats.map(c=>`
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <div style="width:10px;height:10px;border-radius:2px;background:${c.c};flex-shrink:0"></div>
+      <div style="flex:1;font-size:12px;color:var(--muted)">${c.l}</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text)">${c.v}</div>
+      <div style="width:40px;text-align:right;font-size:11px;color:${c.c}">${(c.v/grand*100).toFixed(1)}%</div>
+    </div>`).join('');
+}
+
+function renderTopPosts() {
+  const top = [...FULL_DATA].sort((a,b)=>b.total-a.total).slice(0,15);
+  document.getElementById('topPostsList').innerHTML = top.map((p,i) => `
+    <div class="post-card region-${p.region}">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <div style="font-family:'Bebas Neue',cursive;font-size:22px;color:var(--muted);width:32px">#${i+1}</div>
+        <div style="flex:1;font-size:13px;font-weight:600">${p.post_name}</div>
+        <div class="post-total">${p.total}</div>
+      </div>
+      <div class="post-meta">
+        <span class="region-badge">${p.region}</span>
+        <span class="meta-pill">🎂 ${p.age_limit}</span>
+        <span class="meta-pill">💰 ${p.pay_level}</span>
+        <span class="meta-pill">📚 ${p.qual_group.split(' ')[0]}</span>
+      </div>
+    </div>`).join('');
+}
+
+// Scroll to top button
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 300);
+});
+
+// Init
+applyFilters();
+</script>
+</body>
+</html>
